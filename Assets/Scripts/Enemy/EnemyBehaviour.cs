@@ -7,7 +7,7 @@ public class EnemyBehaviour : MonoBehaviour
     public AudioClip destructionSFX;
 
     // physical simulation hits. For Unity to call this function, at least one of the colliding objects
-	// needs to have their RigidBody component set to "Dynamic" for Body Type
+    // needs to have their RigidBody component set to "Dynamic" for Body Type
     private void OnCollisionEnter2D(Collision2D collision)
     {
         print("I Collided!");
