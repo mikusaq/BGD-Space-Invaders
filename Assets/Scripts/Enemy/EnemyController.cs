@@ -9,13 +9,15 @@ public class EnemyController : MonoBehaviour
     public float moveDistance = 1f;
 
     bool isMovingRight = true;
-
+    bool moveDown = false;
 
     public float timeStep = 1f;
     public float countdown;
 	
 	// I added a switch to try both methods
 	public bool isUsingCountdown = true;
+
+    public GameObject gameController;
 
     // Use this for initialization
     void Start()
@@ -30,7 +32,10 @@ public class EnemyController : MonoBehaviour
 			// and then repeatedly every timeStep (3rd parameter) amount
 			//InvokeRepeating("Move", timeStep, timeStep);
 			InvokeRepeating("Move", timeStep, timeStep);
-		}
+
+            // Same for moving down
+            InvokeRepeating("MoveDown", timeStep, timeStep);
+        }
     }
 
     // Update is called once per frame
@@ -43,14 +48,32 @@ public class EnemyController : MonoBehaviour
 			if (countdown <= 0)
 			{
 				Move();
-				countdown = timeStep;
+                countdown = timeStep;
 			}
 		}
+        
+        if (transform.position.y < -3f)
+        {
+            int enemyCount = gameObject.GetComponentsInChildren<Transform>().Length - 1;
+            if (enemyCount > 0)
+            {
+                gameController.GetComponent<GameController>().GameOver();
+            }
+        }
     }
 
     void Move()
     {
-        if (isMovingRight)
+        if (moveDown)
+        {
+            // Moving down
+            Vector3 currentPos = transform.position;
+            Vector3 newPos = currentPos - new Vector3(0f, moveDistance);
+            transform.position = newPos;
+
+            moveDown = false;
+        }
+        else if (isMovingRight)
         {
             // Moving right
             Vector3 currentPos = transform.position;
@@ -60,6 +83,7 @@ public class EnemyController : MonoBehaviour
             // If aliens group reached the right-most edge, flip their direction
             if (transform.position.x >= maxPosX)
             {
+                moveDown = true;
                 isMovingRight = false;
             }
         }
@@ -73,6 +97,7 @@ public class EnemyController : MonoBehaviour
             // If aliens group reached the left-most edge, flip their direction
             if (transform.position.x <= minPosX)
             {
+                moveDown = true;
                 isMovingRight = true;
             }
         }
