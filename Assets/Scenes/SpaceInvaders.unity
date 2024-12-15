@@ -316,6 +316,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 945954087, guid: 3d4f7277b58d1804693a9b771da66628, type: 3}
+      propertyPath: maxPosX
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 945954087, guid: 3d4f7277b58d1804693a9b771da66628, type: 3}
+      propertyPath: minPosX
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 945954087, guid: 3d4f7277b58d1804693a9b771da66628, type: 3}
       propertyPath: gameController
       value: 
       objectReference: {fileID: 288622964}
@@ -1355,6 +1363,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 945954087, guid: 3d4f7277b58d1804693a9b771da66628, type: 3}
+      propertyPath: maxPosX
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 945954087, guid: 3d4f7277b58d1804693a9b771da66628, type: 3}
+      propertyPath: minPosX
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 945954087, guid: 3d4f7277b58d1804693a9b771da66628, type: 3}
       propertyPath: gameController
       value: 
       objectReference: {fileID: 288622964}
@@ -1819,11 +1835,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 945954087, guid: 3d4f7277b58d1804693a9b771da66628, type: 3}
       propertyPath: maxPosX
-      value: 2.33
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 945954087, guid: 3d4f7277b58d1804693a9b771da66628, type: 3}
       propertyPath: minPosX
-      value: -2.33
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 945954087, guid: 3d4f7277b58d1804693a9b771da66628, type: 3}
       propertyPath: gameController
