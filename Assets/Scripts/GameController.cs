@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public GameObject player;
     public GameObject[] enemyGroups;
     public TMP_Text enemyText;
 
     public GameObject wonPanel;
     public GameObject lostPanel;
+
     int enemyCount;
 
     // Update is called once per frame
@@ -23,8 +25,9 @@ public class GameController : MonoBehaviour
             enemyCount = count;
             enemyText.text = "Enemies: " + enemyCount;
         }
-        if(enemyCount == 0)
+        if(enemyCount == 0 && !wonPanel.gameObject.activeSelf)
         {
+            DisableGame();
             wonPanel.gameObject.SetActive(true);
         }
     }
@@ -32,6 +35,23 @@ public class GameController : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void GameOver()
+    {
+        DisableGame();
+        lostPanel.gameObject.SetActive(true);
+    }
+
+    void DisableGame()
+    {
+        enabled = false;
+        foreach(GameObject enemyGroup in enemyGroups)
+        {
+            enemyGroup.GetComponent<EnemyController>().enabled = false;
+        }
+        player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<Shooter>().enabled = false;
     }
 
     int CountEnemies()
